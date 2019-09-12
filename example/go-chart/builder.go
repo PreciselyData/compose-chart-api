@@ -189,7 +189,7 @@ func (b *builder) GetSeriesColor(index int) drawing.Color {
 
 func (b *builder) titleStyle() chart.Style {
 	if b.title == "" {
-		return chart.Style{Show: false}
+		return chart.Style{Hidden: true}
 	}
 	font := b.ResolveFont(b.titleFont)
 	return b.fontStyle(font)
@@ -265,7 +265,6 @@ func (b *builder) buildMultiSeries() (series []chart.Series) {
 			series,
 			chart.ContinuousSeries{
 				Style: chart.Style{
-					Show:            true,
 					StrokeWidth:     b.multiSeriesLineWidth(i),
 					StrokeDashArray: b.multiSeriesLineDash(i),
 				},
@@ -338,7 +337,6 @@ func (b *builder) valueFormatter(v interface{}) string {
 
 func (b *builder) fontStyle(fs *pic.FontStyle) chart.Style {
 	return chart.Style{
-		Show:     true,
 		Font:     fs.TruetypeFont,
 		FontSize: fs.PointSize,
 		FontColor: drawing.Color{
