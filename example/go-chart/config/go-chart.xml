@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<propertyTemplate id="go-chart" name="Go-chart example" locale="en-us" version="1" description="Example implementation of a plug-in chart">
+  <category id="presentation" name="Presentation">
+    <property id="title" name="Title" type="vp"/>
+    <property id="titleFont" name="Title Font" type="fp"/>
+    <property id="bgColor" name="Background Color" type="cp"/>
+  </category>
+  <category id="legendConfig" name="Legend">
+    <property id="legend" name="Show Legend" type="bool"/>
+    <property id="legendPos" name="Position" type="optSort" indent="1" enable="legend=true">
+      <option id="left" name="Left"/>
+      <option id="top" name="Top"/>
+    </property>
+    <property id="legendColor" name="Background Color" type="cp" indent="2" enable="legendPos=left"/>
+    <property id="legendOpacity" name="Background Opacity" type="int" min="0" max="100" indent="2" enable="legendPos=left"/>
+    <property id="legendOffset" name="Offset" type="mu" indent="2" enable="legendPos=top"/>
+  </category>
+  <dataSet id="data" name="Data">
+    <property id="dataStyle" name="Data Style" type="dataStyle">
+      <option id="line" name="Line"/>
+      <property id="lineStyle" name="Line Style" type="optSort">
+        <option id="solid" name="Solid"/>
+        <option id="dash" name="Dash"/>
+      </property>
+      <property id="lineWidth" name="Line Width" type="mu"/>
+    </property>
+  </dataSet>
+  <configuration id="pie" name="Pie" maxDataCols="1">
+    <categoryRef id="general"/>
+    <dataSetRef id="data"/>
+    <categoryRef id="presentation"/>
+  </configuration>
+  <configuration id="donut" name="Donut" maxDataCols="1">
+    <categoryRef id="general"/>
+    <dataSetRef id="data"/>
+    <categoryRef id="presentation"/>
+  </configuration>
+  <configuration id="line" name="Line">
+    <variant id="line" name="Line" linear="true"/>
+    <categoryRef id="general"/>
+    <dataSetRef id="data"/>
+    <categoryRef id="presentation"/>
+    <categoryRef id="legendConfig"/>
+    <category id="axis" name="Axis">
+      <property id="axisFont" name="Axis Font" type="fp" description="Select the font style for the axis labels"/>
+    </category>
+  </configuration>
+</propertyTemplate>
