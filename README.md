@@ -14,7 +14,7 @@ To use the example implementation in Designer you will need to build it as a 32-
 
 Although Go supports cross-compilation for building executables (for example, building a Linux executable on a Windows machine), this is not practical when building shared libraries (.dll or .so files) as the C libraries for the target platform must be available on the build machine. In other words, you will need to build your `.so` file on Linux and your `.dll` file(s) on Windows. Note that you do not need to install Go to use the shared libraries, you just need to install Go to build them.
 
-To build the example application and the `pic` package, you must have at least version 1.12 of Go installed. Visit https://golang.org/dl for download links and installation instructions.
+To build the example application and the `pic` package, you must have at least version 1.12 of Go installed. Visit https://golang.org/dl for download links and installation instructions. Once you have created your Go [src](https://golang.org/doc/install#testing) directory, run `go get -u github.com/PitneyBowes/compose-chart-api/example/go-chart` to download the example application and `pic` package code.
 
 To build a Go module as a shared library you also need to have GCC installed. If you need to install GCC on Windows, follow the instructions below. For Linux, GCC binaries are typically included as part of the distribution but may need to be installed using the package manager. Instructions to install GCC on Linux are specific to the distribution and are not covered here.
 
