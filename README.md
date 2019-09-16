@@ -14,13 +14,13 @@ To use the example implementation in Designer you will need to build it as a 32-
 
 Although Go supports cross-compilation for building executables (for example, building a Linux executable on a Windows machine), this is not practical when building shared libraries (.dll or .so files) as the C libraries for the target platform must be available on the build machine. In other words, you will need to build your `.so` file on Linux and your `.dll` file(s) on Windows. Note that you do not need to install Go to use the shared libraries, you just need to install Go to build them.
 
-To build the example application and the `pic` package, you must have at least version 1.12 of Go installed. Visit https://golang.org/dl for download links and installation instructions. Once you have created your Go [src](https://golang.org/doc/install#testing) directory, run `go get -u github.com/PitneyBowes/compose-chart-api/example/go-chart` to download the example application and `pic` package code.
+To build the example application and the `pic` package, you must have at least version 1.12 of Go installed. Visit https://golang.org/dl for download links and installation instructions.
 
 To build a Go module as a shared library you also need to have GCC installed. If you need to install GCC on Windows, follow the instructions below. For Linux, GCC binaries are typically included as part of the distribution but may need to be installed using the package manager. Instructions to install GCC on Linux are specific to the distribution and are not covered here.
 
 ### Install GCC for Windows
 
-You can download the GCC installer from https://mingw-w64.org/doku.php/download/mingw-builds
+GCC binary releases for Windows are available from [various websites](https://gcc.gnu.org/install/binaries.html), however only the `Cygwin` and `mingw-w64` projects offer both 32-bit and 64-bit installations. The following steps are for the `mingw-w64` installer which can be downloaded from [here](http://mingw-w64.org/doku.php/download/mingw-builds) by clicking on the `Sourceforge` link. This will redirect you to the sourceforge website where the download should start automatically.
 
 To install both the 32-bit and 64-bit compilers you will need to run the installer twice.
 
@@ -31,11 +31,13 @@ Each installation will go into a separate folder - `C:\Program Files (x86)\mingw
 for 32-bit and `C:\Program Files\mingw-w64\x86_64...` for 64-bit. You can change these directories
 during installation if you wish.
 
-To build a shared library or DLL, the Go compiler (via `cgo`) needs to know the location of GCC,
-so GCC must be in your path. The `mingw-w64.bat` file in the 32-bit and 64-bit installation folders can be used to open a
-command shell with the correct PATH set.
+To build a shared library or DLL, the Go compiler (via `cgo`) needs to know the location of GCC, so GCC must
+be in your path. The `mingw-w64.bat` file in the 32-bit and 64-bit installation folders can be used to open a
+command shell with the correct PATH set. Run the 32-bit version first to build the DLL for Designer, as described below.
 
 ### Go Build
+
+Once you have created your Go [src](https://golang.org/doc/install#testing) directory, run `go get -u github.com/PitneyBowes/compose-chart-api/example/go-chart` to download the example application and `pic` package code.
 
 To build a shared library, the environment variable `CGO_ENABLED` must be set to `1`. To build the 32-bit DLL, the environment variable `GOARCH` must be set to `386`. The default value for `CGO_ENABLED` is `1`, but changing the value of `GOARCH` also changes `CGO_ENABLED` to `0`, so make sure you set `CGO_ENABLED` after setting `GOARCH` to build the 32-bit DLL on 64-bit Windows. You shouldn't need to set either of these environment variables otherwise, but you can run `go env` to check they are correct before building.
 
