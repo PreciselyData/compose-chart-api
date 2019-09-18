@@ -112,3 +112,10 @@ To tie a configuration to a data style, include a `variant` element with an `id`
 #### Property group
 
 The `propertyGroup` element is used to group `property` elements together. Each `id` of a property group must be unique for all chart engines. A property group is referenced using the `propertyGroupRef` element. The `prefix` attribute is used to create a unique name for each property in the referenced group when saved to the configuration for `EnchCreateImage`. If a property is not required for a particular reference it can be removed with the `remove=<property-id>` attribute. To remove more than one property, separate each `id` with a comma.
+
+## Compatibility
+
+This API was published to coincide with the release of Designer/Generate 6.6 SP10 and is therefore compatible with version 6.6 SP10 and later. The API should also be compatible with previous releases of Designer/Generate version 6, but this has not been tested. The following known issues exist with versions of Designer/Generate prior to 6.6 SP10.
+1. If the chart engine implementation does not export the required functions, Designer may crash or report a meaningless error. Designer 6.6 SP10 reports a meaningful error.
+2. Modifying an existing chart and changing the engine setting results in errors on the data page. This option is disabled in Designer 6.6 SP10 when modifying a chart.
+3. 64-bit Generate for Windows does not support PNG images returned by the chart engine. This issue has been resolved in Generate 6.6 SP10.
