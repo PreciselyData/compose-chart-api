@@ -14,6 +14,9 @@ This repository contains code to help you create your own plug-in chart engine t
   - [Install GCC for Windows](#install-gcc-for-windows)
   - [Go Build](#go-build)
 - [Installing the example](#installing-the-example)
+- [Installing on EngageOne Server](#installing-on-engageone-server)
+  - [Interactive Editor setup file](#interactive-editor-setup-file)
+  - [ActiveX cab file](#activex-cab-file)
 - [How it works](#how-it-works)
   - [Configuration](#configuration)
   - [Property attributes](#property-attributes)
@@ -74,6 +77,18 @@ You must also copy the contents of the `config` folder to the Designer client su
 If your installed Designer language is not English then you will also need to copy the template files to the appropriate `propertytemplates\charts\<language-id>` subfolder and change the `locale` attribute in `go-chart.xml` to match. In this case, you may also wish to localise the values of the `name` and `description` attributes in the `go-chart.xml` file, and the default values in the `go-chart.cfg` file.
 
 To install the example for Generate, copy `go-chart.dll` (or `go-chart.so` on Linux) into the same folder as `doc1gen`.
+
+## Installing on EngageOne Server
+
+For Generate, copy your 64-bit `.dll` or `.so` file into the same folder as `doc1gen` in the batch and composition bundles. For the Interactive Editor, follow the steps below depending on your installation type.
+
+### Interactive Editor setup file
+
+If you install the Interactive Editor Application or the ActiveX Editor on your client machines using one of the `setup.exe` files, you will need to copy your 32-bit `.dll` to the installation folder after the installation is complete. See the EngageOne Server Installation Guide [here](https://www.pitneybowes.com/us/support/products/software/engageone-server-support.html) where it talks about deploying an `ApplicationStyle.xaml` file to change the visual style of the Interactive Editor Application. You will need to follow the same steps to deploy your `.dll`.
+
+### ActiveX cab file
+
+If you allow your clients to install the ActiveX Editor via Internet Explorer you will need to add your 32-bit `.dll` to the `eoeditor.cab` file. This means that you will also need to subsequently sign the cab file with your own certificate.
 
 ## How it works
 
