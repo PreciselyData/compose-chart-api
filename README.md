@@ -8,6 +8,23 @@ EngageOne® Designer/Generate Plug-in Chart API for [Go](https://golang.org).
 
 This repository contains code to help you create your own plug-in chart engine to use with Designer and Generate. Package [pic](https://github.com/PitneyBowes/compose-chart-api/tree/master/pic) defines the API, and [example/go-chart](https://github.com/PitneyBowes/compose-chart-api/tree/master/example/go-chart) provides an example implementation.
 
+## Table of Contents
+
+- [Building the example](#building-the-example)
+  - [Install GCC for Windows](#install-gcc-for-windows)
+  - [Go Build](#go-build)
+- [Installing the example](#installing-the-example)
+- [How it works](#how-it-works)
+  - [Configuration](#configuration)
+  - [Property attributes](#property-attributes)
+    - [Indent](#indent)
+    - [Enable](#enable)
+    - [Type](#type)
+  - [Other elements](#other-elements)
+    - [Data set](#data-set)
+    - [Property group](#property-group)
+- [Compatibility](#compatibility)
+
 ## Building the example
 
 To use the example implementation in Designer you will need to build it as a 32-bit DLL. If you run 64-bit Generate on Windows, you will also need to build it as a 64-bit DLL. If your Generate platform is Linux then you will need to build it as a shared object (.so file).
