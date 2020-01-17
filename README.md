@@ -57,11 +57,11 @@ command shell with the correct PATH set. Run the 32-bit version first to build t
 
 ### Go Build
 
-Once you have created your Go [src](https://golang.org/doc/install#testing) directory, run `go get -u github.com/PitneyBowes/compose-chart-api/example/go-chart` to download the example application and `pic` package code.
+Once you have created your Go [src](https://golang.org/doc/install#testing) directory, run `go get -d -u github.com/PitneyBowes/compose-chart-api/example/go-chart` to download the example application and `pic` package code. If you followed the default steps to create your Go `src` directory then the code should now be in the `%USERPROFILE%\go\src\github.com\PitneyBowes\compose-chart-api` directory on Windows, or the `~/go/src/github.com/PitneyBowes/compose-chart-api` directory on Linux.
 
 To build a shared library, the environment variable `CGO_ENABLED` must be set to `1`. To build the 32-bit DLL, the environment variable `GOARCH` must be set to `386`. The default value for `CGO_ENABLED` is `1`, but changing the value of `GOARCH` also changes `CGO_ENABLED` to `0`, so make sure you set `CGO_ENABLED` after setting `GOARCH` to build the 32-bit DLL on 64-bit Windows. You shouldn't need to set either of these environment variables otherwise, but you can run `go env` to check they are correct before building.
 
-From the example/go-chart folder, the command to build is:
+From the `example/go-chart` subdirectory, the command to build is:
 ```
 go build -buildmode=c-shared -o go-chart.dll
 ```
