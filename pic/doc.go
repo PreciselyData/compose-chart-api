@@ -1,6 +1,6 @@
-// Copyright 2019 Pitney Bowes Inc.
+// Copyright (c) 1993, 2020 Precisely. All rights reserved.
 
-// Package pic defines the Plug-in Chart API for EngageOne® Designer/Generate.
+// Package pic defines the Plug-in Chart API for EngageOne Designer/Generate.
 // It provides the export functions called by Designer/Generate to create a
 // chart image, and functions to help parse the chart configuration settings.
 //

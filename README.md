@@ -1,12 +1,12 @@
 # Compose Chart API
 
-[![LICENSE](https://img.shields.io/badge/license-MIT-green)](https://github.com/PitneyBowes/compose-chart-api/blob/master/LICENSE)
-[![Go Report Card](https://goreportcard.com/badge/github.com/PitneyBowes/compose-chart-api/pic)](https://goreportcard.com/report/github.com/PitneyBowes/compose-chart-api/pic)
-[![GoDoc](https://godoc.org/github.com/PitneyBowes/compose-chart-api/pic?status.svg)](https://godoc.org/github.com/PitneyBowes/compose-chart-api/pic)
+[![LICENSE](https://img.shields.io/badge/license-MIT-green)](https://github.com/PreciselyData/compose-chart-api/blob/master/LICENSE)
+[![Go Report Card](https://goreportcard.com/badge/github.com/PreciselyData/compose-chart-api/pic)](https://goreportcard.com/report/github.com/PreciselyData/compose-chart-api/pic)
+[![GoDoc](https://godoc.org/github.com/PreciselyData/compose-chart-api/pic?status.svg)](https://godoc.org/github.com/PreciselyData/compose-chart-api/pic)
 
-EngageOne® Designer/Generate Plug-in Chart API for [Go](https://golang.org).
+EngageOne Designer/Generate Plug-in Chart API for [Go](https://golang.org).
 
-This repository contains code to help you create your own plug-in chart engine to use with Designer and Generate. Package [pic](https://github.com/PitneyBowes/compose-chart-api/tree/master/pic) defines the API, and [example/go-chart](https://github.com/PitneyBowes/compose-chart-api/tree/master/example/go-chart) provides an example implementation.
+This repository contains code to help you create your own plug-in chart engine to use with Designer and Generate. Package [pic](https://github.com/PreciselyData/compose-chart-api/tree/master/pic) defines the API, and [example/go-chart](https://github.com/PreciselyData/compose-chart-api/tree/master/example/go-chart) provides an example implementation.
 
 ## Table of Contents
 
@@ -57,16 +57,15 @@ command shell with the correct PATH set. Run the 32-bit version first to build t
 
 ### Go Build
 
-Once you have created your Go [src](https://golang.org/doc/install#testing) directory, run `go get -d -u github.com/PitneyBowes/compose-chart-api/example/go-chart` to download the example application and `pic` package code. If you followed the default steps to create your Go `src` directory then the code should now be in the `%USERPROFILE%\go\src\github.com\PitneyBowes\compose-chart-api` directory on Windows, or the `~/go/src/github.com/PitneyBowes/compose-chart-api` directory on Linux.
+From a command prompt, run `go get -d -u github.com/PreciselyData/compose-chart-api/example/go-chart` to download the example application and `pic` package code. The code should now be in the `%GOPATH%\src\github.com\PreciselyData\compose-chart-api` directory on Windows, or the `$GOPATH/src/github.com/PreciselyData/compose-chart-api` directory on Linux. Change to this directory in your command prompt.
 
-To build a shared library, the environment variable `CGO_ENABLED` must be set to `1`. To build the 32-bit DLL, the environment variable `GOARCH` must be set to `386`. The default value for `CGO_ENABLED` is `1`, but changing the value of `GOARCH` also changes `CGO_ENABLED` to `0`, so make sure you set `CGO_ENABLED` after setting `GOARCH` to build the 32-bit DLL on 64-bit Windows. You shouldn't need to set either of these environment variables otherwise, but you can run `go env` to check they are correct before building.
+To build a shared library, the environment variable `CGO_ENABLED` must be set to `1`. To build the 32-bit DLL, the environment variable `GOARCH` must be set to `386`. The default value for `CGO_ENABLED` is `1`, but changing the value of `GOARCH` also changes `CGO_ENABLED` to `0`, so make sure you set `CGO_ENABLED` back to `1` after setting `GOARCH` to build the 32-bit DLL on 64-bit Windows. You shouldn't need to set either of these environment variables otherwise, but you can run `go env` to check they are correct before building.
 
-From the `example/go-chart` subdirectory, the command to build is:
+Change directory to `example/go-chart` and run the following to build the example:
 ```
 go build -buildmode=c-shared -o go-chart.dll
 ```
-Replace `.dll` with `.so` when building on Linux. If you omit the `-o` option, the output will be created without
-an extension.
+Replace `.dll` with `.so` when building on Linux. If you omit the `-o` option, the output will be created without an extension.
 
 ## Installing the example
 
@@ -84,7 +83,7 @@ For Generate, copy your 64-bit `.dll` or `.so` file into the same folder as `doc
 
 ### Interactive Editor setup file
 
-If you install the Interactive Editor Application or the ActiveX Editor on your client machines using one of the `setup.exe` files, you will need to copy your 32-bit `.dll` to the installation folder after the installation is complete. See the EngageOne Server Installation Guide [here](https://www.pitneybowes.com/us/support/products/software/engageone-server-support.html) where it talks about deploying an `ApplicationStyle.xaml` file to change the visual style of the Interactive Editor Application. You will need to follow the same steps to deploy your `.dll`.
+If you install the Interactive Editor Application or the ActiveX Editor on your client machines using one of the `setup.exe` files, you will need to copy your 32-bit `.dll` to the installation folder after the installation is complete. See the EngageOne Server Installation Guide where it talks about deploying an `ApplicationStyle.xaml` file to change the visual style of the Interactive Editor Application. You will need to follow the same steps to deploy your `.dll`.
 
 ### ActiveX cab file
 
@@ -92,9 +91,9 @@ If you allow your clients to install the ActiveX Editor via Internet Explorer yo
 
 ## How it works
 
-Once installed, the example implementation can be seen working inside Designer from the Plug-in Chart dialog. You will see a new option in the Engine drop-down list called `Go-chart example`. When Designer loads the Plug-in Chart dialog it scans the `propertytemplates\charts\<language-id>` directory for XML files with a `propertyTemplate` root element. The value of the `name` attribute in this element is added to the engine list, and the value of the `id` element is the file name (minus extension) of the DLL to load in order to create the chart image. You can see these values in the [go-chart.xml](https://github.com/PitneyBowes/compose-chart-api/blob/master/example/go-chart/config/go-chart.xml) file.
+Once installed, the example implementation can be seen working inside Designer from the Plug-in Chart dialog. You will see a new option in the Engine drop-down list called `Go-chart example`. When Designer loads the Plug-in Chart dialog it scans the `propertytemplates\charts\<language-id>` directory for XML files with a `propertyTemplate` root element. The value of the `name` attribute in this element is added to the engine list, and the value of the `id` element is the file name (minus extension) of the DLL to load in order to create the chart image. You can see these values in the [go-chart.xml](https://github.com/PreciselyData/compose-chart-api/blob/master/example/go-chart/config/go-chart.xml) file.
 
-The DLL must export the functions `EnchCreateImage` and `EnchDestroyImage` otherwise an error will be shown in the dialog where the chart image is usually displayed. The DLL (or shared object on Linux) must also export the `EnchTerminate` function in order to work in Generate. These functions are exported by the `pic` package which takes full care of `EnchDestroyImage` and `EnchTerminate`. When `EnchCreateImage` is called, `pic` calls the interface method `Client.NewBuilder()` to create the image via the `Builder` interface. You can see how the example implements `pic.Builder` [here](https://github.com/PitneyBowes/compose-chart-api/blob/master/example/go-chart/builder.go).
+The DLL must export the functions `EnchCreateImage` and `EnchDestroyImage` otherwise an error will be shown in the dialog where the chart image is usually displayed. The DLL (or shared object on Linux) must also export the `EnchTerminate` function in order to work in Generate. These functions are exported by the `pic` package which takes full care of `EnchDestroyImage` and `EnchTerminate`. When `EnchCreateImage` is called, `pic` calls the interface method `Client.NewBuilder()` to create the image via the `Builder` interface. You can see how the example implements `pic.Builder` [here](https://github.com/PreciselyData/compose-chart-api/blob/master/example/go-chart/builder.go).
 
 ### Configuration
 

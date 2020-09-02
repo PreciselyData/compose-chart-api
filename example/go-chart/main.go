@@ -1,6 +1,6 @@
 package main
 
-import "github.com/PitneyBowes/compose-chart-api/pic"
+import "github.com/PreciselyData/compose-chart-api/pic"
 
 type client struct{}
 

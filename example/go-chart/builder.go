@@ -6,7 +6,7 @@ import (
 	"io"
 	"strings"
 
-	"github.com/PitneyBowes/compose-chart-api/pic"
+	"github.com/PreciselyData/compose-chart-api/pic"
 	"github.com/wcharczuk/go-chart"
 	"github.com/wcharczuk/go-chart/drawing"
 )

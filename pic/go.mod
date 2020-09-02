@@ -1,3 +1,3 @@
-module github.com/PitneyBowes/compose-chart-api/pic
+module github.com/PreciselyData/compose-chart-api/pic
 
 go 1.12
