@@ -57,7 +57,11 @@ command shell with the correct PATH set. Run the 32-bit version first to build t
 
 ### Go Build
 
-From a command prompt, run `go get -d -u github.com/PreciselyData/compose-chart-api/example/go-chart` to download the example application and `pic` package code. The code should now be in the `%GOPATH%\src\github.com\PreciselyData\compose-chart-api` directory on Windows, or the `$GOPATH/src/github.com/PreciselyData/compose-chart-api` directory on Linux. Change to this directory in your command prompt.
+From a command prompt, run the following to download the example application and `pic` package code.
+```
+go get -d -u github.com/PreciselyData/compose-chart-api/example/go-chart
+```
+The code should now be in the `%GOPATH%\src\github.com\PreciselyData\compose-chart-api` directory on Windows, or the `$(go env GOPATH)/src/github.com/PreciselyData/compose-chart-api` directory on Linux. Change to this directory in your command prompt.
 
 To build a shared library, the environment variable `CGO_ENABLED` must be set to `1`. To build the 32-bit DLL, the environment variable `GOARCH` must be set to `386`. The default value for `CGO_ENABLED` is `1`, but changing the value of `GOARCH` also changes `CGO_ENABLED` to `0`, so make sure you set `CGO_ENABLED` back to `1` after setting `GOARCH` to build the 32-bit DLL on 64-bit Windows. You shouldn't need to set either of these environment variables otherwise, but you can run `go env` to check they are correct before building.
 
